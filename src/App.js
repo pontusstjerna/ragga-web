@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { generateSE } from 'autoflirt';
+import { generateSE, wordsSE } from 'autoflirt';
+import CountUp from 'react-countup';
 import './App.css';
 
 class App extends Component {
@@ -37,20 +38,25 @@ class App extends Component {
                 </header>
                 <body className="App-body">
                     <p className="App-flirt">{flirt}</p>
-                    <button className="btn-generate" onClick={this.generate}>Generera</button>
-
-                    <div className="App-settings">
-                        <div className="App-settings-item">
-                            <input className="checkbox" type="checkbox" checked={!isSerious} onClick={() => this.setState({isSerious: !isSerious})} />
-                            <label>Konstigt</label>
-                        </div>
-                        <div className="App-settings-item">
-                            <input type="checkbox" className="checkbox" checked={isMean} onClick={() => this.setState({isMean: !isMean})} />
-                            <label>Elakt</label>
+                    <div>
+                        <button className="btn-generate" onClick={this.generate}>Generera</button>
+                        <div className="App-settings">
+                            <div className="App-settings-item">
+                                <input className="checkbox" type="checkbox" checked={!isSerious} onClick={() => this.setState({isSerious: !isSerious})} />
+                                <label>Konstigt</label>
+                            </div>
+                            <div className="App-settings-item">
+                                <input type="checkbox" className="checkbox" checked={isMean} onClick={() => this.setState({isMean: !isMean})} />
+                                <label>Elakt</label>
+                            </div>
                         </div>
                     </div>
                 </body>
                 <footer>
+                    <div className="App-countup">
+                        <CountUp start="0" end={wordsSE()} separator=" " duration="10" />
+                        <p className="App-countup-text">Antal raggningsrepliker tillgängliga just nu.</p>
+                    </div>
                     <p className="App-footer">Appens utvecklare <a href="https://github.com/pontusstjerna">Pontus Stjernström</a> vill höja ett varningens finger för att du
                     i sällsynta fall ej får ragg genom att använda denna sida. Det är också helt utom utvecklarens ansvar vilka konsekvenser det får. Används helt på egen risk.</p>
                 </footer>

@@ -5,6 +5,7 @@
   "dependencies": {
     "autoflirt": "git+https://github.com/pontusstjerna/autoflirt.git",
     "react": "^16.8.6",
+    "react-countup": "^4.1.3",
     "react-dom": "^16.8.6",
     "react-scripts": "3.0.0"
   },

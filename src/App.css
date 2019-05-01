@@ -21,29 +21,30 @@
     justify-content: space-between;
     color: #cc6666;
     width: 80%;
-    height: 30vh;
+    height: 35vh;
 }
 
 .App-flirt {
-    font-size: calc(12px + 2vmin);
+    font-size: calc(2px + 3vmin);
     text-align: left;
 }
 
 .App-settings {
-    margin: 2vh 0;
+    margin: 3vh 0;
     display: flex;
     justify-content: center;
+    color: #888;
 }
 
 .App-settings-item {
-    margin: 0 5px;
+    margin: 0 8px;
     display: flex;
     align-items: center;
 }
 
 .App-footer {
     font-size: calc(5px + 1vmin);
-    margin: 2vh 20px;
+    margin: 0 20px 2vh 20px;
 }
 
 .btn-generate {
@@ -99,4 +100,14 @@
 
 .checkbox:focus {
     outline: none;
+}
+
+.App-countup {
+    margin: 2vh 20px;
+    color: #cc6666;
+}
+
+.App-countup-text {
+    margin: 0;
+    color: #888;
 }
