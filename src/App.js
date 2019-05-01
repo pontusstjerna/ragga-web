@@ -16,6 +16,10 @@ class App extends Component {
         this.generate = this.generate.bind(this);
     }
 
+    componentDidMount() {
+        this.generate();
+    }
+
     generate() {
         const { isSerious, isMean } = this.state;
         this.setState({flirt: generateSE(isSerious, isMean)});
@@ -28,21 +32,28 @@ class App extends Component {
             <div className="App">
                 <header className="App-header">
                     <p>
-                        Välkommen till <b>Pontus Raggningsreplikgenerator</b>! <br />Tryck på knappen nedan för att generera en
-                        raggningsreplik.
+                        Välkommen till <b>Pontus Raggningsreplikgenerator</b>!
                     </p>
                 </header>
-                <body>
-                    <p className={"App-flirt" + flirt ? '' : 'App-flirt-hidden'}>{flirt ? flirt : 'aaa'}</p>
+                <body className="App-body">
+                    <p className="App-flirt">{flirt}</p>
                     <button className="btn-generate" onClick={this.generate}>Generera</button>
 
-                    <div className="app-settings">
-                        <input type="checkbox" checked={!isSerious} onClick={() => this.setState({isSerious: !isSerious})} />
-                        <label>Konstigt</label>
-                        <input type="checkbox" checked={isMean} onClick={() => this.setState({isMean: !isMean})} />
-                        <label>Elakt</label>
+                    <div className="App-settings">
+                        <div className="App-settings-item">
+                            <input className="checkbox" type="checkbox" checked={!isSerious} onClick={() => this.setState({isSerious: !isSerious})} />
+                            <label>Konstigt</label>
+                        </div>
+                        <div className="App-settings-item">
+                            <input type="checkbox" className="checkbox" checked={isMean} onClick={() => this.setState({isMean: !isMean})} />
+                            <label>Elakt</label>
+                        </div>
                     </div>
                 </body>
+                <footer>
+                    <p className="App-footer">Appens utvecklare <a href="https://github.com/pontusstjerna">Pontus Stjernström</a> vill höja ett varningens finger för att du
+                    i sällsynta fall ej får ragg genom att använda denna sida. Det är också helt utom utvecklarens ansvar vilka konsekvenser det får. Används helt på egen risk.</p>
+                </footer>
             </div>
         );
     }
