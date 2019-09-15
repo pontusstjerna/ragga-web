@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { generateSE, wordsSE } from 'autoflirt';
 import CountUp from 'react-countup';
 import './App.css';
 
@@ -12,6 +11,7 @@ class App extends Component {
             flirt: '',
             isSerious: true,
             isMean: false,
+            count: 0,
         };
 
         this.generate = this.generate.bind(this);
@@ -19,15 +19,29 @@ class App extends Component {
 
     componentDidMount() {
         this.generate();
+
+        fetch('/api/se/count').then(result => {
+            if (result.ok) {
+                return result.text();
+            }
+
+            return '0';
+        }).then(count => this.setState({count}));
     }
 
     generate() {
         const { isSerious, isMean } = this.state;
-        this.setState({flirt: generateSE(isSerious, isMean)});
+        fetch(`/api/se?serious=${isSerious}&mean=${isMean}`).then(result => {
+            if (result.ok) {
+                return result.text();
+            }
+
+            return '';
+        }).then(flirt => this.setState({flirt}));
     }
 
     render() {
-        const { flirt, isSerious, isMean } = this.state;
+        const { flirt, isSerious, isMean, count } = this.state;
 
         return (
             <div className="App">
@@ -54,10 +68,11 @@ class App extends Component {
                 </body>
                 <footer>
                     <div className="App-countup">
-                        <CountUp start="0" end={wordsSE()} separator=" " duration="10" />
+
+                        <CountUp start="0" end={count} separator=" " duration="10" />
                         <p className="App-countup-text">Antal raggningsrepliker tillgängliga just nu.</p>
                     </div>
-                    <p className="App-footer">Appens utvecklare <a href="https://github.com/pontusstjerna">Pontus Stjernström</a> vill höja ett varningens finger för att du
+                    <p className="App-footer">Appens utvecklare <a href="https://github.com/pontusstjerna">Pontus Drejer</a> vill höja ett varningens finger för att du
                     i sällsynta fall ej får ragg genom att använda denna sida. Det är också helt utom utvecklarens ansvar vilka konsekvenser det får. Används helt på egen risk.</p>
                 </footer>
             </div>
