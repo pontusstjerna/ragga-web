@@ -11,6 +11,7 @@ class App extends Component {
             flirt: '',
             isSerious: true,
             isMean: false,
+            useBusiness: false,
             count: 0,
         };
 
@@ -30,8 +31,8 @@ class App extends Component {
     }
 
     generate() {
-        const { isSerious, isMean } = this.state;
-        fetch(`/api/se?serious=${isSerious}&mean=${isMean}`).then(result => {
+        const { isSerious, isMean, useBusiness } = this.state;
+        fetch(`/api/se?serious=${isSerious}&mean=${isMean}&business=${useBusiness}`).then(result => {
             if (result.ok) {
                 return result.text();
             }
@@ -41,7 +42,7 @@ class App extends Component {
     }
 
     render() {
-        const { flirt, isSerious, isMean, count } = this.state;
+        const { flirt, isSerious, isMean, useBusiness, count } = this.state;
 
         return (
             <div className="App">
@@ -62,6 +63,10 @@ class App extends Component {
                             <div className="App-settings-item">
                                 <input type="checkbox" className="checkbox" checked={isMean} onClick={() => this.setState({isMean: !isMean})} />
                                 <label>Elakt</label>
+                            </div>
+                            <div className="App-settings-item">
+                                <input type="checkbox" className="checkbox" checked={useBusiness} onClick={() => this.setState({useBusiness: !useBusiness})} />
+                                <label><a href="https://foretagsnamngenerator.se">Företag</a></label>
                             </div>
                         </div>
                     </div>
