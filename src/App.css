@@ -1,32 +1,57 @@
+h1 {
+    font-size: 1.5em;
+}
+
+a {
+    color: #F88375;
+}
+
 .App {
   text-align: center;
-  background-color: #f4f0ef;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
   font-size: calc(8px + 2vmin);
-  color: #888;
+  color: #555;
 }
 
 .App-header {
-    margin-top: 2vh;
+    color: #F88375;
 }
 
 .App-body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    color: #cc6666;
-    width: 80%;
-    height: 35vh;
+    justify-content: space-around;
+    color: #F88375;
+    height: 80vh;
+    width: 100%;
 }
 
 .App-flirt {
-    font-size: calc(2px + 3vmin);
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-align: left;
+    color: white;
+    background: #F88375;
+    margin: 0;
+    height: 40vh;
+    width: 100%;
+}
+
+.App-flirt-text {
+    font-size: calc(2px + 3vmin);
+    margin: 0 4vh 0 4vh;
+    transition: .3s ease;
+}
+
+.App-flirt-text__loading {
+    font-size: 1px;
+    opacity: 0.5;
 }
 
 .App-settings {
@@ -44,14 +69,16 @@
 
 .App-footer {
     font-size: calc(5px + 1vmin);
-    margin: 0 20px 2vh 20px;
+    margin: 0 4vh 2vh 4vh;
 }
 
 .btn-generate {
+    background-color: transparent;
+    color: #F88375;
+    border: 2px solid #F88375;
+    border-radius: 10px;
     font-size: calc(12px + 2vmin);
-    border: none;
-    box-shadow: 2px 2px 2px #00000055;
-    padding: 5px 10px;
+    padding: 10px 15px;
     transition: .2s ease;
 }
 
@@ -60,7 +87,8 @@
 }
 
 .btn-generate:hover {
-    background: #bbb;
+    background-color: #F88375;
+    color: white;
 }
 
 .checkbox {
@@ -80,13 +108,13 @@
 }
 
 .checkbox:hover {
-    border: 2px solid #cc6666;
+    border: 2px solid #F88375;
 }
 
 .checkbox:checked {
-	border: 2px solid #cc6666;
-    color: #cc6666;
-    background: #cc6666;
+	border: 2px solid #F88375;
+    color: #F88375;
+    background: #F88375;
 }
 
 .checkbox:checked:after {
@@ -102,12 +130,6 @@
     outline: none;
 }
 
-.App-countup {
-    margin: 2vh 20px;
-    color: #cc6666;
-}
-
 .App-countup-text {
-    margin: 0;
-    color: #888;
+    color: #555;
 }
